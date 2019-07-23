@@ -134,7 +134,7 @@ class Python(AutotoolsPackage):
         # a Mac.
         depends_on('libuuid', when='+uuid')
 
-    patch('tkinter.patch', when='@:2.8,3.3: platform=darwin')
+    patch('tkinter.patch', when='+tkinter @:2.8,3.3: platform=darwin')
 
     # Ensure that distutils chooses correct compiler option for RPATH on cray:
     patch('cray-rpath-2.3.patch', when='@2.3:3.0.1 platform=cray')
