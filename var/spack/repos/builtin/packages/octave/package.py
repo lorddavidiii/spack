@@ -61,11 +61,8 @@ class Octave(AutotoolsPackage):
     variant('zlib',       default=False)
 
     # - build system dependencies
-    # depends_on("autoconf", type="build")
-    # depends_on("automake", type="build")
-    # depends_on("m4", type="build")
-    depends_on("libtool", type="build")
-    depends_on("pkg-config", type="build")
+    # depends_on("libtool", type="build")
+    # depends_on("pkg-config", type="build")
 
     # Required dependencies
     depends_on('blas')
