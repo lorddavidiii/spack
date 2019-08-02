@@ -24,12 +24,18 @@ class Octave(AutotoolsPackage):
     version('4.2.2', '77b84395d8e7728a1ab223058fe5e92dc38c03bc13f7358e6533aab36f76726e')
     version('4.2.1', '80c28f6398576b50faca0e602defb9598d6f7308b0903724442c2a35a605333b')
     version('4.2.0', '443ba73782f3531c94bcf016f2f0362a58e186ddb8269af7dcce973562795567')
+    version('4.0.3', '5a16a42fca637ae1b55b4a5a6e7b16a6df590cbaeeb4881a19c7837789515ec6')
     version('4.0.2', 'c2a5cacc6e4c52f924739cdf22c2c687')
     version('4.0.0', 'a69f8320a4f20a8480c1b278b1adb799')
 
     # patches
     # see https://savannah.gnu.org/bugs/?50234
     patch('patch_4.2.1_inline.diff', when='@4.2.1')
+
+    patch('patches-4.0.3/fix-libgnu.patch', when='@4.0.3')
+    # Debian stretch patches for compiling 4.0.3 with gcc >= 6
+    patch('patches-4.0.3/gcc-6-abs-overload.patch', when='@4.0.3%gcc@6:')
+    patch('patches-4.0.3/gcc-6-include-math-stdlib.patch', when='@4.0.3%gcc@6:')
 
     # Variants
     variant('readline',   default=True)
@@ -54,9 +60,14 @@ class Octave(AutotoolsPackage):
     variant('suitesparse', default=False)
     variant('zlib',       default=False)
 
+    # - build system dependencies
+    # depends_on("libtool", type="build")
+    # depends_on("pkg-config", type="build")
+
     # Required dependencies
     depends_on('blas')
     depends_on('lapack')
+
     # Octave does not configure with sed from darwin:
     depends_on('sed', when=sys.platform == 'darwin', type='build')
     depends_on('pcre')
@@ -86,6 +97,8 @@ class Octave(AutotoolsPackage):
     depends_on('qt+opengl',    when='+qt')
     depends_on('suite-sparse', when='+suitesparse')
     depends_on('zlib',         when='+zlib')
+
+    build_directory = "spack_build"
 
     def configure_args(self):
         # See
