@@ -600,7 +600,7 @@ def get_specs(force=False):
 
     mirrors = spack.config.get('mirrors')
     if len(mirrors) == 0:
-        tty.warn("No Spack mirrors are currently configured")
+        tty.debug("No Spack mirrors are currently configuredo")
         return {}
 
     path = str(spack.architecture.sys_type())
