@@ -222,6 +222,9 @@ class Octave(AutotoolsPackage):
         else:
             config_args.append("--without-z")
 
+        if sys.platform == 'darwin':
+            config_args.append("ac_cv_func_mkostemp=no")
+
         return config_args
 
     # ========================================================================
