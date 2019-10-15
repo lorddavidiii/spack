@@ -13,7 +13,8 @@ class Pkgconf(AutotoolsPackage):
     maintaining compatibility."""
 
     homepage = "http://pkgconf.org/"
-    url      = "http://distfiles.dereferenced.org/pkgconf/pkgconf-1.5.4.tar.xz"
+    ## url      = "http://distfiles.dereferenced.org/pkgconf/pkgconf-1.5.4.tar.xz"
+    url = "https://sources.voidlinux.org/pkgconf-1.6.0/pkgconf-1.6.0.tar.xz"
 
     version('1.6.1',  '22b9ee38438901f9d60f180e5182821180854fa738fd071f593ea26a81da208c')
     version('1.6.0',  '6135a3abb576672ba54a899860442ba185063f0f90dae5892f64f7bae8e1ece5')
