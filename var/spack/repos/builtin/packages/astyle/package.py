@@ -33,8 +33,8 @@ class Astyle(MakefilePackage):
         makefile = join_path(self.build_directory, 'Makefile')
         filter_file(r'^CXX\s*=.*', 'CXX=%s' % spack_cxx, makefile)
         # strangely enough install -o $(USER) -g $(USER) stoped working on OSX
-        if sys.platform == 'darwin':
-            filter_file(r'^INSTALL=.*', 'INSTALL=install', makefile)
+        # we have do this also on atlas, as there is no group for each user
+        filter_file(r'^INSTALL=.*', 'INSTALL=install', makefile)
 
     @property
     def install_targets(self):
