@@ -58,6 +58,8 @@ class ArpackNg(Package):
 
     patch('make_install.patch', when='@3.4.0')
     patch('parpack_cmake.patch', when='@3.4.0')
+    patch('gcc10-fixes.patch', when='%gcc@10:')
+    patch('0001-vout-expects-a-vector-so-make-sure-to-pass-a-vector.patch', when='%gcc@10:')
 
     # Fujitsu compiler does not support 'isnan' function.
     # isnan: function that determines whether it is NaN.
