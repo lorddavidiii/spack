@@ -58,8 +58,12 @@ class ArpackNg(Package):
 
     patch('make_install.patch', when='@3.4.0')
     patch('parpack_cmake.patch', when='@3.4.0')
-    patch('gcc10-fixes.patch', when='%gcc@10:')
-    patch('0001-vout-expects-a-vector-so-make-sure-to-pass-a-vector.patch', when='%gcc@10:')
+
+    # The current release is not compatible with gcc 10.
+    # Based on two upstream commits:
+    #  - https://github.com/opencollab/arpack-ng/commit/9418632214acf6d387896ab29a8f5bdff2d4e38a
+    #  - https://github.com/opencollab/arpack-ng/commit/ad82dcbc0beeed5616e2d5a28a089d9785f8b8b8
+    patch('gcc10.patch', when='@3.7.0 %gcc@10:')
 
     # Fujitsu compiler does not support 'isnan' function.
     # isnan: function that determines whether it is NaN.
