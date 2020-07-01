@@ -7,8 +7,8 @@
 from spack import *
 
 
-class OpenclHeaders(Package):
-    """OpenCL (Open Computing Language) header files"""
+class OpenclCHeaders(Package):
+    """OpenCL (Open Computing Language) C header files"""
 
     homepage = "https://www.khronos.org/registry/OpenCL/"
     url      = "https://github.com/KhronosGroup/OpenCL-Headers/archive/v2020.06.16.tar.gz"
