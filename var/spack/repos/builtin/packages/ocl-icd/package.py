@@ -33,3 +33,12 @@ OpenCL ICD loaders."""
     depends_on('opencl-headers', when='+headers')
 
     provides('opencl@:2.2', when='+headers')
+
+    @when('@:2.2.12 %gcc@10:')
+    def setup_build_environment(self, env):
+        # build failed on gcc-10 because
+        # gcc-10 change the default from -fcommon to fno-common
+        # This will be fixed in versions greater than 2.2.12:
+        # https://github.com/OCL-dev/ocl-icd/commit/4667bddd365bcc1dc66c483835971f0083b44b1d
+        # and this: https://github.com/OCL-dev/ocl-icd/issues/8
+        env.set('CFLAGS', '-fno-inline-functions -fcommon')
