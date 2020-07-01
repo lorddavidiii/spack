@@ -41,4 +41,4 @@ OpenCL ICD loaders."""
         # This will be fixed in versions greater than 2.2.12:
         # https://github.com/OCL-dev/ocl-icd/commit/4667bddd365bcc1dc66c483835971f0083b44b1d
         # and this: https://github.com/OCL-dev/ocl-icd/issues/8
-        env.set('CFLAGS', '-fno-inline-functions -fcommon')
+        env.set('CFLAGS', '-O2 -fcommon')
