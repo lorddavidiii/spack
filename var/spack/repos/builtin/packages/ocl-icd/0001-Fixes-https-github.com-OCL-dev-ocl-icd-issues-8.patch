@@ -1,0 +1,25 @@
+From 161f2291fd8b99b7475c9d01c151fcacf3cf0526 Mon Sep 17 00:00:00 2001
+From: Brice Videau <bvideau@anl.gov>
+Date: Tue, 12 May 2020 13:56:39 -0500
+Subject: [PATCH] Fixes https://github.com/OCL-dev/ocl-icd/issues/8.
+
+---
+ ocl_icd_loader.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ocl_icd_loader.c b/ocl_icd_loader.c
+index 1d46f7d..c74c016 100644
+--- a/ocl_icd_loader.c
++++ b/ocl_icd_loader.c
+@@ -59,7 +59,7 @@ int debug_ocl_icd_mask=0;
+ 
+ typedef __typeof__(clGetPlatformInfo) *clGetPlatformInfo_fn;
+ 
+-inline void dump_vendor_icd(const char* info, const struct vendor_icd *v) {
++static inline void dump_vendor_icd(const char* info, const struct vendor_icd *v) {
+   debug(D_DUMP, "%s %p={ num=%i, handle=%p, f=%p}\n", info,
+ 	v, v->num_platforms, v->dl_handle, v->ext_fn_ptr);
+ }
+-- 
+2.27.0
+
