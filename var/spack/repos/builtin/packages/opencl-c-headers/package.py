@@ -18,7 +18,7 @@ class OpenclCHeaders(Package):
     version('2020.03.13', sha256='664bbe587e5a0a00aac267f645b7c413586e7bc56dca9ff3b00037050d06f476')
 
     def install(self, spec, prefix):
+        install_tree('CL', prefix.include.CL)
         if sys.platform == 'darwin':
-            install_tree('CL', prefix.include.OpenCL)
-        else:
-            install_tree('CL', prefix.include.CL)
+            ln = which('ln')
+            ln('-s', prefix.include.CL, prefix.include.OpenCL)
