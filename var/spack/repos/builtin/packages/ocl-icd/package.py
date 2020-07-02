@@ -43,3 +43,7 @@ OpenCL ICD loaders."""
         # This will be fixed in versions greater than 2.2.12:
         # https://github.com/OCL-dev/ocl-icd/commit/4667bddd365bcc1dc66c483835971f0083b44b1d
         env.set('CFLAGS', '-fcommon')
+
+    @run_before('configure')
+    def clean_configure_directory(self):
+        make('distclean')
