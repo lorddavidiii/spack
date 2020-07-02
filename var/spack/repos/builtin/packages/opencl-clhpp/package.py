@@ -5,6 +5,7 @@
 
 
 from spack import *
+import sys
 
 
 class OpenclClhpp(CMakePackage):
@@ -19,3 +20,9 @@ class OpenclClhpp(CMakePackage):
     version('2.0.9',  sha256='ba8ac4977650d833804f208a1b0c198006c65c5eac7c83b25dc32cea6199f58c')
 
     root_cmakelists_dir = 'include'
+
+    @run_after('install')
+    def post_install(self):
+        if sys.platform == 'darwin':
+            ln = which('ln')
+            ln('-s', prefix.include.CL, prefix.include.OpenCL)
