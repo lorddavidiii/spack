@@ -13,6 +13,7 @@ OpenCL ICD loaders."""
     homepage = "https://github.com/OCL-dev/ocl-icd"
     url      = "https://github.com/OCL-dev/ocl-icd/archive/v2.2.12.tar.gz"
 
+    version('2.2.13', sha256='f85d59f3e8327f15637b91e4ae8df0829e94daeff68c647b2927b8376b1f8d92')
     version('2.2.12', sha256='17500e5788304eef5b52dbe784cec197bdae64e05eecf38317840d2d05484272')
     version('2.2.11', sha256='c1865ef7701b8201ebc6930ed3ac757c7e5cb30f3aa4c1e742a6bc022f4f2292')
     version('2.2.10', sha256='d0459fa1421e8d86aaf0a4df092185ea63bc4e1a7682d3af261ae5d3fae063c7')
