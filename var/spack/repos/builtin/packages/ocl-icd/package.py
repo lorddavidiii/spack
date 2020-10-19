@@ -32,11 +32,8 @@ OpenCL ICD loaders."""
     depends_on('libtool',  type='build')
     depends_on('m4',       type='build')
     depends_on('ruby',     type='build')
-    # needed to build man pages, but asciidoc version in spack repo is not
-    # python3 compatible yet, there is a pending PR to add the new upstream
-    # version which is compatible with python3: https://github.com/spack/spack/pull/18920
-    #depends_on('asciidoc', type='build')
-    #depends_on('xmlto',    type='build')
+    depends_on('asciidoc-py3', type='build')
+    depends_on('xmlto',    type='build')
     depends_on('opencl-headers@3.0:', when='+headers')
 
     provides('opencl@:3.0', when='@2.2.13:+headers')
