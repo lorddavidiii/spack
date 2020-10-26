@@ -4,12 +4,6 @@
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
 
 from spack import *
-import sys
-import os
-
-def modify(func):
-    module = sys.modules[func.__module__]
-    print(module)
 
 
 class FontUtil(AutotoolsPackage, XorgPackage):
@@ -99,11 +93,7 @@ class FontUtil(AutotoolsPackage, XorgPackage):
         autoreconf = which('autoreconf')
 
         for font in fonts:
-            print(font)
-            modify(find)
-            fontroot = find(font, '*', recursive=False)
-            print(fontroot)
-            print(os.getcwd())
+            fontroot = find(font, join_path(self.build_directory, font, '*'), recursive=False)
             with working_dir(fontroot[0]):
                 autoreconf(*autoconf_args)
                 configure = Executable("./configure")
