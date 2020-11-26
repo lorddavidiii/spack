@@ -12,7 +12,10 @@
 """:"
 # prefer python3, then python, then python2
 for cmd in python3 python python2; do
+  if [ "$($cmd -V 2>&1)" != "Python 3.4.2" ]
+  then
    command -v > /dev/null $cmd && exec $cmd $0 "$@"
+ fi
 done
 
 echo "==> Error: spack could not find a python interpreter!" >&2
